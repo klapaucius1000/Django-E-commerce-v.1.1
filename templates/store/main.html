@@ -1,0 +1,58 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%}Preadtory Plants Store{% endblock %}
+
+{% block content%}
+<section class="py-5 text-center container">
+    <div class="row py-lg-5">
+        <div class="col-lg-6 col-md-8 mx-auto">
+            <h1 class="h1 fw-bold">Seedlings, seeds, fertilizers, accessories.</h1>
+            <p class="lead text-muted">Welcome on board! Our store its the best place fo enthusiasts of insectivorous
+                plants.
+                Here you will find absolutely everything you need to establish a breeding farm and nurture your plants.
+                Also check out our blog, where we publish interesting aspects of plant breeding.
+            </p>
+            {% if user.is_authenticated %}
+            <a type="button" href="{% url 'store:all_products' %}" class="btn btn-primary my-2">Lets get started</a>
+            {% else %}
+            <a type="button" href="{% url 'account:login' %}" class="btn btn-primary my-2">Log in to your account</a>
+
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+  <div class="container">
+    <div class="row">
+      <div class="album py-5">
+        <div class="pb-3 h5">Our all products</div>
+        {% if not products %}
+        <div class="col-12">We currently have no products in our stock.</div>
+        {% else %}
+        <div class="row row-cols-1 row-cols-sm-2 row-cols-md-5 g-3">
+          {% for product in products %}
+          <div class="col">
+            <div class="card border-0">
+              {% for image in product.product_image.all %}
+              {% if image.is_feature%}
+              <img class="img-fluid" alt="Responsive image" src="{{ image.image.url }}"
+                alt="{{ image.image.alt_text }}">
+              {% endif %}
+              {% endfor %}
+              <div class="card-body px-0">
+                <p class="card-text">
+                  <a class="text-dark text-decoration-none"
+                    href="{{ product.get_absolute_url }}">{{ product.title|slice:":50" }}</a>
+                </p>
+                <div class="fw-bold">{{product.regular_price}} PLN(Polish Zloty)</div>
+              </div>
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  {% endblock %}

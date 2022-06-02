@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% block title %}Error{% endblock %}
+{% block content %}
+
+
+<style>
+    .account-form input {
+        border: 2px solid #ccc;
+        height: calc(2em + .75rem + 2px);
+    }
+
+    .account-form input:focus {
+        border-color: #1497ff;
+        box-shadow: inset 0 0px 0px rgba(0, 0, 0, 0.075), 0 0 0px rgba(255, 0, 0, 0.6);
+    }
+
+</style>
+<div class="container-fluid col-md-12 ">
+    <div>
+        <h3 class="mb-4">Order error</h3>
+        <h2> Error occured. If in doubt, please contact us. We will try to help you.</h2>
+        <a href="{% url 'account:dashboard' %}">Return to the dashboard</a>
+
+    </div>
+</div>
+
+{% endblock %}

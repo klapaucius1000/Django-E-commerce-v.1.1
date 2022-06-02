@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title%}Read our blog{% endblock %}
+
+{% block content%}
+
+  <section class="py-5 text-center container">
+    <div class="row py-lg-5">
+      <div class="col-lg-6 col-md-8 mx-auto">
+        <h1 class="h1 fw-bold">Website under development</h1>
+        <p class="lead text-muted">We are making every effort to get this part of the site up as soon as possible.
+            There is nothing here at the moment, so please come back later.
+        </p>
+
+          <a href="{% url 'store:all_products' %}" class="btn btn-primary my-2">Back to homepage</a>
+
+      </div>
+    </div>
+  </section>
+
+
+
+{% endblock %}

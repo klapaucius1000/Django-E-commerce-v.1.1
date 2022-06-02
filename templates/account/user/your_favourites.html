@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block title %}Your favourites{% endblock %}
+
+{% block content %}
+<div class="col-9 mx-auto">
+    <br>
+    <br>
+    <h1 class="h3">Here you can view your favourites.</h1>
+
+    <hr>
+
+    {% if favourites %}
+    {% for products in favourites %}
+    <div class="col-md-2">
+        {% for image in product.product_image.all %}
+            {% if image.is_feature %}
+            <img class="img-fluid d-block p-2" width="135px" src="{{ image.image.url }}"
+             alt="{{ image.image.alt_text }}"/>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <div class="card-body">
+        <h5 class="card-title">{{ product.title }}</h5>
+        <p class="card-text">{{ product.description }}</p>
+        <p class="card-text"><small class="text-muted">{{ product.normal_price }}</small></p>
+        <a type="button" class="btn btn-danger fw500 btn-sm" href="{% url 'account:users_favourites' product.id %}">Remove
+            from Favourites list</a>
+
+    </div>
+
+    {% endfor %}
+    {% else %}
+    <p class="card-text">Unfortunately, you don't have any products in your Favourites list.</p>
+    {% endif %}
+
+
+</div>
+
+{% endblock %}
