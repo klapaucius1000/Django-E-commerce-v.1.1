@@ -1,5 +1,5 @@
 The first major update to my project, an e-commerce shop for insectivorous plants. 
-Link to version 1.0 here: https://github.com/PapaBear928/Django-E-commerce
+Link to version 1.0 here: https://github.com/klapaucius1000/Django-E-commerce
 
 . There have been a few noteworthy changes to the project:
 
